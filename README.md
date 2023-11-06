@@ -4,5 +4,5 @@ Chengnan Shentu, Enxu Li, Chaojun Chen, Puspita Triana Dewi, David B. Lindell, J
 
 https://arxiv.org/abs/2303.00891
 
-- Under review for 2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+- In revision for IEEE Robotics and Automation Letters (RA-L)
 - Code and datasets will be made available here upon publication.
