@@ -8,7 +8,7 @@ https://arxiv.org/abs/2303.00891
 
 
 ## Requirements and Installation
-Our implementation is based on python 3.7 and Cuda 11.0.
+Our implementation is based on python 3.7 and Cuda 11.0. Tested on Ubuntu 22.04.
 ```
 git clone https://github.com/ContinuumRoboticsLab/MoSSNet.git
 cd MoSSNet
@@ -16,6 +16,8 @@ pip install -r requirements.txt
 ```
 
 ## Datasets and Checkpoints
+
+You can view sample data in `/MoSSNet/dataset_sample`.
 
 |Dataset Name |#Shapes |Zip File Size |Link |
 |------|------------|--------------|------|
