@@ -1,0 +1,15 @@
+./idea/*
+.DS_Store
+
+# compilation and distribution
+__pycache__
+*.out
+*.err
+*.zip
+
+# editor settings
+.vscode
+
+# project dir
+logs
+dataset/*/

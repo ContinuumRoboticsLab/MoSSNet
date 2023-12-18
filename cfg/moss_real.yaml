@@ -1,0 +1,30 @@
+trainer_cfg:
+  exp_name: mossnet_real
+  seed: 5201314
+  log_dir: logs
+  n_epochs: 150
+  lr: 0.001
+  weight_decay: 0.0001
+  key_metric: M_error
+  w_depth_loss: 0.0
+  w_offset_loss: 0.0
+  w_s_loss: 100.0
+  save_ckpt_every_n_epoch: 50
+
+train_data_cfg:
+  base_path: dataset/MoSS-Real/train
+  batch_size: 4
+  num_workers: 8
+  shuffle: True
+  drop_last: False
+  pin_memory: True
+  downsample_factor: 4 
+
+eval_data_cfg:
+  base_path: dataset/MoSS-Real/eval
+  batch_size: 4
+  num_workers: 8
+  shuffle: False
+  drop_last: False
+  pin_memory: True
+  downsample_factor: 4
