@@ -1,5 +1,7 @@
 # MoSSNet: Monocular Shape Sensing for Continuum Robots
 
+<img src="./assets/fig_overview.jpg" width="350" alt="io_overview">
+
 MoSSNet is an eye-to-hand monocular approach to continuum robot shape sensing. Utilizing a deep encoder-decoder network, MoSSNet achieves accurate and real-time shape sensing without fiducial markers, manual segmentation, or camera calibration.
 
 Authors: Chengnan Shentu*, Enxu Li*, Chaojun Chen, Puspita Triana Dewi, David B. Lindell, Jessica Burgner-Kahrs; Accepted for IEEE Robotics and Automation Letters (RA-L)
@@ -17,7 +19,9 @@ pip install -r requirements.txt
 
 ## Datasets and Checkpoints
 
-You can view sample data in `/MoSSNet/dataset_sample`.
+<img src="./assets/fig_setup.jpg" width="7000" alt="setup_and_dataset">
+
+Our dataset is based on a 2 segment tendon-driven continuum robot (TDCR) that is 250mm in length. You can view sample data in `/MoSSNet/dataset_sample`.
 
 |Dataset Name |#Shapes |Zip File Size |Link |
 |------|------------|--------------|------|
@@ -29,7 +33,7 @@ You can view sample data in `/MoSSNet/dataset_sample`.
 
 |Checkpoint Name|Training Set|Zip File Size |Link|
 |---------------|------------|--------------|----|
-|checkpoint_mossnet_sim|MoSS-Sim/train|0.45G|[[OneDrive]](https://utoronto-my.sharepoint.com/:u:/g/personal/c_shentu_mail_utoronto_ca/EQOBE24SaulBpzpNgggFgTsByHqP4LQZwof6JmC7QFg7Qw?e=Tfkrzn) [[GoogleDrive]](https://drive.google.com/file/d/1BnfXUKLjkq3FHwMEfBFjzbSAzA3gQtdy/view?usp=sharing)
+|checkpoint_mossnet_sim|MoSS-Sim/train|0.15G|[[OneDrive]](https://utoronto-my.sharepoint.com/:u:/g/personal/c_shentu_mail_utoronto_ca/EQOBE24SaulBpzpNgggFgTsByHqP4LQZwof6JmC7QFg7Qw?e=Tfkrzn) [[GoogleDrive]](https://drive.google.com/file/d/1BnfXUKLjkq3FHwMEfBFjzbSAzA3gQtdy/view?usp=sharing)
 |checkpoint_mossnet_real|MoSS-Real/train|0.15G|[[OneDrive]](https://utoronto-my.sharepoint.com/:u:/g/personal/c_shentu_mail_utoronto_ca/EUQDvqYc7SNOt0Ko9IagJokBgfoiGjLFT3d6wp4620hxkQ?e=tsveDw) [[GoogleDrive]](https://drive.google.com/file/d/1SxDlD0BTiPnhTiGqRIE85AT5l86qXG4j/view?usp=sharing)
 
 ---
