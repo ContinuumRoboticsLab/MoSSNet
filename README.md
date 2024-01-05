@@ -4,7 +4,11 @@
 
 MoSSNet is an eye-to-hand monocular approach to continuum robot shape sensing. Utilizing a deep encoder-decoder network, MoSSNet achieves accurate and real-time shape sensing without fiducial markers, manual segmentation, or camera calibration.
 
-Authors: Chengnan Shentu*, Enxu Li*, Chaojun Chen, Puspita Triana Dewi, David B. Lindell, Jessica Burgner-Kahrs; Accepted for IEEE Robotics and Automation Letters (RA-L)
+Authors: [Chengnan Shentu*](https://www.cs.toronto.edu/~cshentu/), [Enxu Li*](https://www.cs.toronto.edu/~tli/), Chaojun Chen, Puspita Triana Dewi, [David B. Lindell](https://davidlindell.com/), [Jessica Burgner-Kahrs](https://crl.utm.utoronto.ca/jbk/)
+
+IEEE Robotics and Automation Letters (RA-L)
+
+https://ieeexplore.ieee.org/abstract/document/10372078
 
 https://arxiv.org/abs/2303.00891
 
