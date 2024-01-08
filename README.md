@@ -1,6 +1,6 @@
 # MoSSNet: Monocular Shape Sensing for Continuum Robots
 
-<img src="./assets/fig_overview.jpeg" width="350" alt="io_overview">
+<img src="./assets/fig_overview.png" width="350" alt="io_overview">
 
 MoSSNet is an eye-to-hand monocular approach to continuum robot shape sensing. Utilizing a deep encoder-decoder network, MoSSNet achieves accurate and real-time shape sensing without fiducial markers, manual segmentation, or camera calibration.
 
@@ -23,7 +23,7 @@ pip install -r requirements.txt
 
 ## Datasets and Checkpoints
 
-<img src="./assets/fig_setup.jpeg" width="7000" alt="setup_and_dataset">
+<img src="./assets/fig_setup.png" width="7000" alt="setup_and_dataset">
 
 Our dataset is based on a 2 segment tendon-driven continuum robot (TDCR) that is 250mm in length. You can view sample data in `/MoSSNet/dataset_sample`.
 
