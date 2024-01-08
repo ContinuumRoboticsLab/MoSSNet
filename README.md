@@ -81,11 +81,12 @@ We have modified the `cfg.yaml` files to evaluate on the test set of **MoSS-Sim*
 ## Citation
 If you find our paper and code useful in your research, please consider giving a star and citation :D
 
-    @misc{shentu2023moss,
-        title={MoSS: Monocular Shape Sensing for Continuum Robots}, 
-        author={Chengnan Shentu and Enxu Li and Chaojun Chen and Puspita Triana Dewi and David B. Lindell and Jessica Burgner-Kahrs},
-        year={2023},
-        eprint={2303.00891},
-        archivePrefix={arXiv},
-        primaryClass={cs.RO}
-    }
+      @article{shentu2024moss,
+      author={Shentu, Chengnan and Li, Enxu and Chen, Chaojun and Dewi, Puspita T. and Lindell, David B. and Burgner-Kahrs, Jessica},
+      journal={IEEE Robotics and Automation Letters}, 
+      title={MoSS: Monocular Shape Sensing for Continuum Robots}, 
+      year={2024},
+      volume={9},
+      number={2},
+      pages={1524-1531},
+      doi={10.1109/LRA.2023.3346271}}
