@@ -11,6 +11,7 @@ from PIL import Image, ImageOps
 import pandas as pd
 import open3d as o3d
 import random
+from torchvision import transforms
 
 def valid_img(file_path: str) -> bool:
     return file_path.endswith("_0.png")
@@ -66,6 +67,7 @@ class SimDataset(torch.utils.data.Dataset):
         compute_normals=False,
         downsample_factor=1,
         subsample_dataset_ratio=1.0,
+        transform=False,
     ):
         self.imgs = [os.path.join(base_path, "img", p) for p in sorted(os.listdir(os.path.join(base_path, "img"))) if valid_img(p)]
         self.depths = [os.path.join(base_path, "depth", p) for p in sorted(os.listdir(os.path.join(base_path, "depth"))) if valid_depth(p)]
@@ -87,6 +89,7 @@ class SimDataset(torch.utils.data.Dataset):
         self.max_h = self.min_h + 512
         self.max_w = self.min_w + 512
         self.downsample_factor = downsample_factor
+        self.transform = transform
 
     def __len__(self):
         """Denotes the total number of samples"""
@@ -106,8 +109,18 @@ class SimDataset(torch.utils.data.Dataset):
         """Generates one sample of data"""
         img = Image.open(self.imgs[index])
         w, h = img.size
-        img = np.asarray(img).transpose(2, 0, 1)
-        img = (img / 255.0).astype(np.float32)
+        img = np.asarray(img)
+        if self.transform:
+            img = Image.fromarray(img)
+            s=.10
+            transform = transforms.Compose([transforms.ColorJitter(brightness=s, contrast=s, saturation=s, hue=s),
+                                            transforms.ToTensor()])
+            img = transform(img).numpy()
+            img = img.astype(np.float32)
+        else:
+            img = img.transpose(2, 0, 1)
+            img = (img / 255.0).astype(np.float32)
+        
 
         xx, yy = np.meshgrid(np.linspace(-1, 1, num=w), 
             np.linspace(-1, 1, num=h))
@@ -146,6 +159,7 @@ class RealDataset(torch.utils.data.Dataset):
         compute_normals=False,
         downsample_factor=1,
         subsample_dataset_ratio=1.0,
+        transform=False,
     ):
         self.imgs = [os.path.join(base_path, "img", p) for p in sorted(os.listdir(os.path.join(base_path, "img"))) if valid_real_img_depth_mask(p)]
         self.depths = [os.path.join(base_path, "depth", p) for p in sorted(os.listdir(os.path.join(base_path, "depth"))) if valid_real_img_depth_mask(p)]
@@ -174,6 +188,7 @@ class RealDataset(torch.utils.data.Dataset):
         self.max_w = self.min_w + 512
         self.compute_normals = compute_normals
         self.downsample_factor = downsample_factor
+        self.transform = transform
 
     def __len__(self):
         """Denotes the total number of samples"""
@@ -232,8 +247,17 @@ class RealDataset(torch.utils.data.Dataset):
         """Generates one sample of data"""
         img = Image.open(self.imgs[index])
         w, h = img.size
-        img = np.asarray(img).transpose(2, 0, 1)
-        img = (img / 255.0).astype(np.float32)
+        img = np.asarray(img)
+        if self.transform:
+            img = Image.fromarray(img)
+            s=.10
+            transform = transforms.Compose([transforms.ColorJitter(brightness=s, contrast=s, saturation=s, hue=s),
+                                            transforms.ToTensor()])
+            img = transform(img).numpy()
+            img = img.astype(np.float32)
+        else:
+            img = img.transpose(2, 0, 1)
+            img = (img / 255.0).astype(np.float32)
 
         frame_id = os.path.splitext(os.path.split(self.imgs[index])[-1])[0]
 

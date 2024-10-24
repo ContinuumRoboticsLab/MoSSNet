@@ -45,6 +45,7 @@ class Trainer:
         train_loader: DataLoader,
         model: nn.Module,
         optimizer: Optimizer,
+        scheduler,
         exp_logger: SummaryWriter,
         exp_dirs: str,
         train_batch_size: int,
@@ -58,6 +59,7 @@ class Trainer:
         self.train_loader = train_loader
         self.model = model
         self.optimizer = optimizer
+        self.scheduler = scheduler
         self.evaluator = evaluator
         self.exp_dirs = exp_dirs
         self.exp_logger = exp_logger
@@ -146,6 +148,7 @@ class Trainer:
 
         total_loss.backward()
         self.optimizer.step()
+        self.scheduler.step()
         self.optimizer.zero_grad()
 
     def eval(self):
@@ -191,11 +194,12 @@ def setup_trainer(
     dataset_path = configs.train_data_cfg.base_path
     if not dataset_path.startswith("/"):
         dataset_path = f"{Path(__file__).parent}/{configs.train_data_cfg.base_path}"
-    if "/real_data/" in dataset_path:
+    if "Real" in dataset_path:
         train_dataset = RealDataset(
             base_path=dataset_path,
             downsample_factor=configs.train_data_cfg.downsample_factor,
             subsample_dataset_ratio=configs.train_data_cfg.subsample_dataset_ratio,
+            transform = True,
         )
     else:
         train_dataset = SimDataset(
@@ -203,6 +207,7 @@ def setup_trainer(
             compute_normals=configs.train_data_cfg.compute_normals,
             downsample_factor=configs.train_data_cfg.downsample_factor,
             subsample_dataset_ratio=configs.train_data_cfg.subsample_dataset_ratio,
+            # transform = True,
         )
     train_loader = setup_dataloader(train_dataset, configs.train_data_cfg)
 
@@ -229,7 +234,7 @@ def setup_trainer(
     dataset_path = configs.eval_data_cfg.base_path
     if not dataset_path.startswith("/"):
         dataset_path = f"{Path(__file__).parent}/{configs.eval_data_cfg.base_path}"
-    if "/real_data/" in dataset_path:
+    if "Real" in dataset_path:
         eval_dataset = RealDataset(
             base_path=dataset_path,
             downsample_factor=configs.eval_data_cfg.downsample_factor,
@@ -256,12 +261,17 @@ def setup_trainer(
     exp_logger = SummaryWriter(log_dir=os.path.join(exp_dirs, "tb"))
 
     optimizer = optim.AdamW(model.parameters(), lr=configs.trainer_cfg.lr, weight_decay=configs.trainer_cfg.weight_decay)
+    scheduler = optim.lr_scheduler.OneCycleLR(optimizer, max_lr=configs.trainer_cfg.lr*2,
+                                              steps_per_epoch=len(train_loader),
+                                              epochs=configs.trainer_cfg.n_epochs)
+    print("Using OneCycleLR scheduler.")
 
     trainer = Trainer(
         config=configs.trainer_cfg,
         train_loader=train_loader,
         model=model,
         optimizer=optimizer,
+        scheduler=scheduler,
         evaluator=evaluator,
         exp_dirs=exp_dirs,
         exp_logger=exp_logger,

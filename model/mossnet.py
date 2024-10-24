@@ -206,9 +206,6 @@ class MossNet(nn.Module):
             tip_errs += np.linalg.norm(o_tip - l_tip, ord=2, axis=-1).mean()
             max_errs.append(np.linalg.norm(o_m - l_m, ord=2, axis=-1).max())
             
-
-            counts += 1
-            
             # get x, y, z error
             xyz_error = np.mean(abs(o_m - l_m)[0], axis=0)
             x_err.append(xyz_error[0])

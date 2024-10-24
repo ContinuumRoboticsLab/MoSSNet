@@ -3,8 +3,8 @@ trainer_cfg:
   seed: 5201314
   log_dir: logs
   n_epochs: 150
-  lr: 0.001
-  weight_decay: 0.0001
+  lr: 0.0001
+  weight_decay: 0.00005
   key_metric: M_error
   w_depth_loss: 0.0
   w_offset_loss: 0.0

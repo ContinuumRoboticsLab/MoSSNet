@@ -10,3 +10,4 @@ matplotlib==3.5.3
 scikit-image==0.19.3
 torch==1.9.1+cu111
 torchvision==0.10.1+cu111
+Pillow==9.5.0
