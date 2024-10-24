@@ -12,6 +12,14 @@ https://ieeexplore.ieee.org/abstract/document/10372078
 
 https://arxiv.org/abs/2303.00891
 
+```diff
+- UPDATE (October 2024) -
+We identified a bug in the metric computation function, which impacted the reported
+performance. Additionally, we performed further hyperparameter tuning to restore
+the models’ performance to levels close to the originally reported results.
+The code and model checkpoints have now been corrected.
+```
+
 
 ## Requirements and Installation
 Our implementation is based on python 3.7 and Cuda 11.1. Tested on Ubuntu 22.04.
