@@ -22,7 +22,7 @@ The code and model checkpoints have now been corrected.
 
 
 ## Requirements and Installation
-Our implementation is based on python 3.7 and Cuda 11.1. Tested on Ubuntu 22.04.
+Our implementation is based on python 3.7 and Cuda 11.1. Tested on Ubuntu 20.04.
 ```
 git clone https://github.com/ContinuumRoboticsLab/MoSSNet.git
 cd MoSSNet
